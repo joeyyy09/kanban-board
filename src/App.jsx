@@ -1,17 +1,56 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "../components/Navbar/Navbar";
 import Board from "../components/Board/Board";
 import { DragDropContext } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from "uuid";
-import Editable from "../components/Editable/Editable";
 import useLocalStorage from "use-local-storage";
 import "../bootstrap.css";
+
 function App() {
+  const initialBoards = [
+    {
+      id: "todo",
+      boardName: "To-Do",
+      card: [
+        {
+          id: uuidv4(),
+          title: "Sample To-Do Task",
+          tags: [],
+          task: [],
+        },
+      ],
+    },
+    {
+      id: "pending",
+      boardName: "Pending",
+      card: [
+        {
+          id: uuidv4(),
+          title: "Sample Pending Task",
+          tags: [],
+          task: [],
+        },
+      ],
+    },
+    {
+      id: "completed",
+      boardName: "Completed",
+      card: [
+        {
+          id: uuidv4(),
+          title: "Sample Completed Task",
+          tags: [],
+          task: [],
+        },
+      ],
+    },
+  ];
+
   const [data, setData] = useState(
     localStorage.getItem("kanban-board")
       ? JSON.parse(localStorage.getItem("kanban-board"))
-      : []
+      : initialBoards
   );
 
   const defaultDark = window.matchMedia(
@@ -72,23 +111,6 @@ function App() {
     setData(tempData);
   };
 
-  const addBoard = (title) => {
-    const tempData = [...data];
-    tempData.push({
-      id: uuidv4(),
-      boardName: title,
-      card: [],
-    });
-    setData(tempData);
-  };
-
-  const removeBoard = (bid) => {
-    const tempData = [...data];
-    const index = data.findIndex((item) => item.id === bid);
-    tempData.splice(index, 1);
-    setData(tempData);
-  };
-
   const onDragEnd = (result) => {
     const { source, destination } = result;
     if (!destination) return;
@@ -132,17 +154,9 @@ function App() {
                 setName={setName}
                 addCard={addCard}
                 removeCard={removeCard}
-                removeBoard={removeBoard}
                 updateCard={updateCard}
               />
             ))}
-            <Editable
-              class={"add__board"}
-              name={"Add Board"}
-              btnName={"Add Board"}
-              onSubmit={addBoard}
-              placeholder={"Enter Board  Title"}
-            />
           </div>
         </div>
       </div>

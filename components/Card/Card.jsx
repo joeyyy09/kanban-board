@@ -54,10 +54,6 @@ const Card = (props) => {
             </div>
 
             <div className="card__footer">
-              {/* <div className="time">
-                <Clock />
-                <span>Sun 12:30</span>
-              </div> */}
               {props.card.task.length !== 0 && (
                 <div className="task">
                   <CheckSquare />
