@@ -41,6 +41,25 @@
   border-bottom: 1px solid #f8f8f8;
   cursor: pointer;
 }
+.custom__card {
+  border-radius: 3px;
+  margin-inline: auto;
+  padding-inline: 0.5rem;
+  padding-bottom: 0.4rem;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.todo__card {
+  background-color: orange; /* Color for "To-Do" cards */
+  box-shadow: 0px 2px var(--card-box-shadow);
+}
+
+.pending__card {
+  background-color: yellow; /* Color for "Pending" cards */
+  box-shadow: 0px 2px var(--card-box-shadow);
+}
 
 .card__footer {
   margin-top: 8px;

@@ -16,6 +16,22 @@
   display: flex;
   flex-direction: column;
 }
+.board.todo {
+  background: linear-gradient(to bottom, #f0e68c, #d1bf3a); /* Gradient from Pale Goldenrod to Darker Shade */
+  border: 1px solid #e6db55; /* Light Goldenrod Yellow */
+}
+
+/* Pending Board */
+.board.pending {
+  background: linear-gradient(to bottom, #87ceeb, #5a9ad3); /* Gradient from Sky Blue to Darker Shade */
+  border: 1px solid #6eb6db; /* Light Sky Blue */
+}
+
+/* Completed Board */
+.board.completed {
+  background: linear-gradient(to bottom, #98fb98, #77d37b); /* Gradient from Pale Green to Darker Shade */
+  border: 1px solid #7cc576; /* Pastel Green */
+}
 .board__cards {
   padding: 0.5rem 0.5rem;
   overflow-y: auto;

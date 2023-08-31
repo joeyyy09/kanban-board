@@ -1,13 +1,18 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Light gray background */
+  font-family: Arial, sans-serif;
 }
+
 .App {
   height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--background-color);
+  background-image: url("https://images.hdqwalls.com/download/desktop-abstract-2020-4k-mm-2560x1440.jpg");
   transition: all 350ms;
 }
 .app_outer {
@@ -29,25 +34,6 @@ body {
   line-height: 28px;
 } */
 
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f2f2f2;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 20px 20px 20px 20px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(195, 195, 195);
-}
 .add__board > textarea {
   border: 0.5px solid rgb(167, 167, 167) !important;
   height: 2rem !important;
@@ -60,4 +46,25 @@ body {
 }
 .cardinfo__editable {
   width: fit-content;
+}
+@media screen and (max-width: 768px) {
+  .app_boards {
+    flex-direction: column;
+    gap: 20px;
+    padding-inline: 1rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+.app_boards {
+  margin-top: 20px;
+  min-width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the boards horizontally */
+  gap: 30px;
+  padding-inline: 2rem;
+  color: var(--text-color);
+}
+
 }

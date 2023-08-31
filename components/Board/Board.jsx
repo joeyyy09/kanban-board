@@ -19,9 +19,22 @@ export default function Board(props) {
       });
     };
   });
+const boardType = determineBoardType();
+function determineBoardType() {
+  const boardName = props.name.toLowerCase();
 
+  if (boardName.includes("to-do")) {
+    return "todo";
+  } else if (boardName.includes("pending")) {
+    return "pending";
+  } else if (boardName.includes("completed")) {
+    return "completed";
+  } else {
+    return ""; // Default type
+  }
+}
   return (
-    <div className="board">
+    <div className={`board ${boardType}`}>
       <div className="board__top">
         {show ? (
           <div>
@@ -52,17 +65,6 @@ export default function Board(props) {
             setDropdown(true);
           }}
         >
-          <MoreHorizontal />
-          {dropdown && (
-            <Dropdown
-              class="board__dropdown"
-              onClose={() => {
-                setDropdown(false);
-              }}
-            >
-              <p onClick={() => props.removeBoard(props.id)}>Delete Board</p>
-            </Dropdown>
-          )}
         </div>
       </div>
       <Droppable droppableId={props.id.toString()}>
