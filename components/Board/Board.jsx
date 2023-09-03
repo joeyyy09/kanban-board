@@ -68,21 +68,27 @@ function determineBoardType() {
       </div>
       <Droppable droppableId={props.id.toString()}>
         {(provided) => (
-          <div>
-            {props.card?.map((items, index) => (
-              <Card
-                bid={props.id}
-                id={items.id}
-                index={index}
-                key={items.id}
-                title={items.title}
-                tags={items.tags}
-                updateCard={props.updateCard}
-                removeCard={props.removeCard}
-                card={items}
-              />
-            ))}
-            {provided.placeholder}
+          <div
+            className="board__cards"
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            <div>
+              {props.card?.map((items, index) => (
+                <Card
+                  bid={props.id}
+                  id={items.id}
+                  index={index}
+                  key={items.id}
+                  title={items.title}
+                  tags={items.tags}
+                  updateCard={props.updateCard}
+                  removeCard={props.removeCard}
+                  card={items}
+                />
+              ))}
+              {provided.placeholder}
+            </div>
           </div>
         )}
       </Droppable>
