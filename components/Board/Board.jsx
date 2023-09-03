@@ -64,8 +64,7 @@ function determineBoardType() {
           onClick={() => {
             setDropdown(true);
           }}
-        >
-        </div>
+        ></div>
       </div>
       <Droppable droppableId={props.id.toString()}>
         {(provided) => (
@@ -74,29 +73,33 @@ function determineBoardType() {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {props.card?.map((items, index) => (
-              <Card
-                bid={props.id}
-                id={items.id}
-                index={index}
-                key={items.id}
-                title={items.title}
-                tags={items.tags}
-                updateCard={props.updateCard}
-                removeCard={props.removeCard}
-                card={items}
-              />
-            ))}
-            {provided.placeholder}
+            <div>
+              {props.card?.map((items, index) => (
+                <Card
+                  bid={props.id}
+                  id={items.id}
+                  index={index}
+                  key={items.id}
+                  title={items.title}
+                  tags={items.tags}
+                  updateCard={props.updateCard}
+                  removeCard={props.removeCard}
+                  card={items}
+                />
+              ))}
+              {provided.placeholder}
+            </div>
           </div>
         )}
       </Droppable>
       <div className="board__footer">
         <Editable
-          name={"Add Card"}
-          btnName={"Add Card"}
-          placeholder={"Enter Card Title"}
-          onSubmit={(value) => props.addCard(value, props.id)}
+          titlePlaceholder={"Enter Title"}
+          descPlaceholder={"Enter Description"}
+          btnName={"Add Task"}
+          onSubmit={(title, description) =>
+            props.addCard(title, description, props.id)
+          }
         />
       </div>
     </div>

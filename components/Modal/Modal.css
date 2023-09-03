@@ -13,11 +13,12 @@
 }
 
 .modal__content {
-  /* overflow-y: auto; */
   max-height: 95vh;
   background-color: var(--modal-color);
   border-radius: 3px;
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(5px); /* Add the backdrop-filter property for the blur effect */
+  overflow-y: auto; /* To allow scrolling within the modal content */
 }
 
 .modal__content::-webkit-scrollbar {
