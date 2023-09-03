@@ -1,90 +1,109 @@
-.card__action__btn > button {
-  background-color: var(--task-hover);
-  color: var(--text-color);
+/* CardDetails.css */
+
+/* Container styles */
+.card-details-container {
+  padding: 20px;
+  padding-right: 40px;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styles */
+.icon-md {
+  height: 24px;
+  width: 24px;
+  margin-right: 8px;
+}
+
+.card-title {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  color: #333; /* Darken the title color */
+  margin-bottom: 12px; /* Add spacing between title and description */
+}
+
+/* Description textarea styles */
+.description-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+  margin-bottom: 12px; /* Add spacing between description and buttons */
+}
+
+.description-textarea:focus {
+  border-color: #61bd4f;
+  outline: none; /* Remove default focus outline */
+}
+
+/* Action button styles */
+.card-action-btn > button {
+  background-color: #61bd4f;
+  color: #fff;
   border: none;
-  font-size: 15px;
+  font-size: 16px;
   border-radius: 3px;
-  box-sizing: border-box;
   cursor: pointer;
   display: flex;
-  height: 32px;
+  align-items: center;
+  padding: 10px;
   margin-top: 8px;
   max-width: 300px;
   overflow: hidden;
-  padding: 6px 12px;
-  position: relative;
-  text-decoration: none;
   text-overflow: ellipsis;
-  transition-duration: 85ms;
-  transition-property: background-color, border-color, box-shadow;
-  transition-timing-function: ease;
-  -webkit-user-select: none;
-  user-select: none;
   white-space: nowrap;
-  justify-content: start;
-  align-items: center;
-  gap: 5px;
+  transition: background-color 0.2s ease;
+  margin-right: 12px; /* Add horizontal spacing between buttons */
 }
-.card__action__btn > button:hover {
-  background-color: var(--task-hover);
-  border: none;
+
+.card-action-btn > button:last-child {
+  margin-right: 0; /* Remove margin from the last button */
 }
-.icon__sm > svg {
-  height: 15px;
-  width: 15px;
+
+.card-action-btn > button:hover {
+  background-color: #4f9e3d;
 }
-.icon__md {
-  height: 20px;
-  width: 20px;
+
+/* Icon styles */
+.icon-sm > svg {
+  height: 18px;
+  width: 18px;
+  margin-right: 6px;
 }
-.card__label {
+
+/* Tag styles */
+.card__tags {
   display: flex;
-  justify-content: space-between;
-}
-.label__color > span {
-  height: 32px;
-  box-sizing: border-box;
-  min-width: 40px;
-  width: auto;
-  padding: 0px 12px;
-  display: block;
-  border-radius: 3px;
-  font-weight: 600;
-  color: #fff;
-  line-height: 32px;
-  float: left;
-  margin: 0px 4px 4px 0px;
-}
-.label__color > span:hover {
-  cursor: pointer;
-}
-.progress-bar {
-  background-color: #61bd4f !important;
-}
-.task__editable {
-  width: 30%;
-}
-.task__list {
-  min-height: 20px;
-  height: auto;
-  padding-top: 6px;
-  padding-inline: 0.5rem;
-  border-radius: 2px;
-}
-.task__list:hover {
-  background-color: var(--task-hover);
+  column-gap: 5px;
+  row-gap: 5px;
+  flex-wrap: wrap;
+  align-self: flex-start;
+  margin-bottom: 12px; /* Add spacing between tags and footer */
 }
 
-.task__checkbox {
-  height: 18px !important;
-  width: 18px !important;
-  cursor: pointer;
-}
-.task__list > div > p {
-  text-align: left;
-  font-size: 16px;
+/* Footer styles */
+.card__footer {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
 }
 
-.strike-through {
-  text-decoration: line-through;
+.card__footer div {
+  display: flex;
+  align-items: center;
+}
+
+.card__footer span {
+  font-size: 12px;
+  color: rgb(116, 116, 116);
+  margin-inline: 2px;
+  font-weight: 500;
 }

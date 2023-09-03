@@ -4,13 +4,16 @@ import "./Editable.css";
 
 const Editable = (props) => {
   const [show, setShow] = useState(props?.handler || false);
-  const [text, setText] = useState(props.defaultValue || "");
+  const [title, setTitle] = useState(""); // Initialize title state
+  const [description, setDescription] = useState(""); // Initialize description state
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    if (text && props.onSubmit) {
-      setText("");
-      props.onSubmit(text);
+    if (title && props.onSubmit) {
+      // Check if title is not empty
+      props.onSubmit(title, description); // Pass both title and description to onSubmit
+      setTitle(""); // Clear title
+      setDescription(""); // Clear description
     }
     setShow(false);
   };
@@ -20,12 +23,18 @@ const Editable = (props) => {
       {show ? (
         <form onSubmit={handleOnSubmit}>
           <div className={`editable__input ${props.class}`}>
-            <textarea
-              placeholder={props.placeholder}
+            <input
+              type="text"
+              placeholder={props.titlePlaceholder}
               autoFocus
               id={"edit-input"}
-              type={"text"}
-              onChange={(e) => setText(e.target.value)}
+              value={title} // Bind value to title state
+              onChange={(e) => setTitle(e.target.value)} // Update title state
+            />
+            <textarea
+              placeholder={props.descPlaceholder}
+              value={description} // Bind value to description state
+              onChange={(e) => setDescription(e.target.value)} // Update description state
             />
             <div className="btn__control">
               <button className="add__btn" type="submit">

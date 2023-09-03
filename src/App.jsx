@@ -90,17 +90,19 @@ function App() {
     return tempData;
   };
 
-  const addCard = (title, bid) => {
-    const index = data.findIndex((item) => item.id === bid);
-    const tempData = [...data];
-    tempData[index].card.push({
-      id: uuidv4(),
-      title: title,
-      tags: [],
-      task: [],
-    });
-    setData(tempData);
-  };
+const addCard = (title, description, bid) => {
+  const index = data.findIndex((item) => item.id === bid);
+  const tempData = [...data];
+  tempData[index].card.push({
+    id: uuidv4(),
+    title: title,
+    description: description,
+    tags: [],
+    task: [],
+  });
+  setData(tempData);
+};
+
 
   const removeCard = (boardId, cardId) => {
     const index = data.findIndex((item) => item.id === boardId);
