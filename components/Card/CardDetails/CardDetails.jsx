@@ -9,57 +9,40 @@ export default function CardDetails(props) {
   const colors = ["#61bd4f", "#f2d600", "#ff9f1a", "#eb5a46", "#c377e0"];
 
   const [values, setValues] = useState({ ...props.card });
-  const [input, setInput] = useState(false);
-  const [text, setText] = useState(values.title);
-  const [description, setDescription] = useState(values.description);
   const [labelShow, setLabelShow] = useState(false);
-
-  const Input = (props) => {
-    return (
-      <div className="input-container">
-        <input
-          autoFocus
-          defaultValue={text}
-          type={"text"}
-          onChange={(e) => {
-            setText(e.target.value);
-          }}
-        />
-      </div>
-    );
-  };
-
-  const handleDescriptionChange = (e) => {
-    setDescription(e.target.value);
-  };
 
   const updateTitle = (value) => {
     setValues({ ...values, title: value });
   };
 
-  const addTag = (value, color) => {
-    values.tags.push({
-      id: uuidv4(),
-      tagName: value,
-      color: color,
-    });
+  const updateDescription = (value) => {
+    setValues({ ...values, description: value });
+  };
+  const handleTitleChange = (e) => {
+    const editedTitle = e.target.value;
+    setText(editedTitle);
+    props.updateTitleAndDescription(editedTitle, description);
 
-    setValues({ ...values });
+    props.updateCardTitle(editedTitle);
   };
 
-  const handleClickListener = (e) => {
-    if (e.code === "Enter") {
-      setInput(false);
-      updateTitle(text === "" ? values.title : text);
-    } else return;
+  const handleDescriptionChange = (e) => {
+    const editedDescription = e.target.value;
+    setDescription(editedDescription);
+    props.updateTitleAndDescription(text, editedDescription);
   };
+ const addTag = (value, color) => {
+   const newTag = {
+     id: uuidv4(),
+     tagName: value,
+     color: color,
+   };
 
-  useEffect(() => {
-    document.addEventListener("keypress", handleClickListener);
-    return () => {
-      document.removeEventListener("keypress", handleClickListener);
-    };
-  }, []); // Add an empty dependency array to ensure this effect runs only once
+   setValues((prevValues) => ({
+     ...prevValues,
+     tags: [...prevValues.tags, newTag],
+   }));
+ };
 
   useEffect(() => {
     if (props.updateCard) props.updateCard(props.bid, values.id, values);
@@ -73,21 +56,21 @@ export default function CardDetails(props) {
             <div className="col-12">
               <div className="d-flex align-items-center pt-3 gap-2">
                 <CreditCard className="icon-md" />
-                {input ? (
-                  <Input title={values.title} />
-                ) : (
-                  <h5 className="card-title" onClick={() => setInput(true)}>
-                    {values.title}
-                  </h5>
-                )}
+                <h5 className="card-title">
+                  <input
+                    type="text"
+                    value={values.title}
+                    onChange={(e) => updateTitle(e.target.value)}
+                  />
+                </h5>
               </div>
               <div className="mb-2">
                 {/* Description Input */}
                 <textarea
                   className="description-textarea"
                   placeholder="Add a description..."
-                  value={description}
-                  onChange={handleDescriptionChange}
+                  value={values.description}
+                  onChange={(e) => updateDescription(e.target.value)}
                 />
               </div>
             </div>
