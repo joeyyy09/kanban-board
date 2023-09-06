@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import {
   Calendar,
@@ -29,7 +29,9 @@ const Card = (props) => {
     props.updateCard(props.id, editedTitle, editedDescription);
     setEditMode(false);
   };
-
+  const updateCardTitle = (newTitle) => {
+    setEditedTitle(newTitle);
+  };
   const handleCancelClick = () => {
     setEditMode(false);
     setEditedTitle(props.title);
@@ -40,6 +42,14 @@ const Card = (props) => {
     // Implement delete functionality here
     props.removeCard(props.id);
   };
+
+  const updateEditedValues = (editedTitle, editedDescription) => {
+    setEditedTitle(editedTitle);
+    setEditedDescription(editedDescription);
+  };
+  useEffect(() => {
+    setEditedTitle(props.title);
+  }, [props.title]);
 
   return (
     <Draggable
@@ -53,6 +63,8 @@ const Card = (props) => {
             <CardDetails
               updateCard={props.updateCard}
               onClose={setModalShow}
+              updateTitleAndDescription={updateEditedValues}
+              updateCardTitle={updateCardTitle} // Pass the function
               card={props.card}
               bid={props.bid}
               removeCard={props.removeCard}
@@ -125,7 +137,6 @@ const Card = (props) => {
                 </div>
               </>
             )}
-
 
             {provided.placeholder}
           </div>
