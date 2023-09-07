@@ -8,11 +8,49 @@ import useLocalStorage from "use-local-storage";
 import "../bootstrap.css";
 
 function App() {
-
+const initialBoards = [
+  {
+    id: "todo",
+    boardName: "To-Do",
+    card: [
+      {
+        id: uuidv4(),
+        title: "Sample To-Do Task",
+        tags: [],
+        task: [],
+      },
+    ],
+  },
+  {
+    id: "pending",
+    boardName: "Pending",
+    card: [
+      {
+        id: uuidv4(),
+        title: "Sample Pending Task",
+        tags: [],
+        task: [],
+      },
+    ],
+  },
+  {
+    id: "completed",
+    boardName: "Completed",
+    card: [
+      {
+        id: uuidv4(),
+        title: "Sample Completed Task",
+        tags: [],
+        task: [],
+      },
+    ],
+  },
+];
+  
   const [data, setData] = useState(
     localStorage.getItem("kanban-board")
       ? JSON.parse(localStorage.getItem("kanban-board"))
-      : []
+      : initialBoards
   );
 
   const defaultDark = window.matchMedia(
