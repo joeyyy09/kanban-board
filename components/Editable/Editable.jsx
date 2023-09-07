@@ -4,8 +4,8 @@ import "./Editable.css";
 
 const Editable = (props) => {
   const [show, setShow] = useState(props?.handler || false);
-  const [title, setTitle] = useState(""); // Initialize title state
-  const [description, setDescription] = useState(""); // Initialize description state
+  const [title, setTitle] = useState(""); 
+  const [description, setDescription] = useState(""); 
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
