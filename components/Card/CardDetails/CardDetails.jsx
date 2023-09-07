@@ -7,7 +7,6 @@ import Label from "../../Label/Label";
 
 export default function CardDetails(props) {
   const colors = ["#61bd4f", "#f2d600", "#ff9f1a", "#eb5a46", "#c377e0"];
-
   const [values, setValues] = useState({ ...props.card });
   const [labelShow, setLabelShow] = useState(false);
 
@@ -18,19 +17,7 @@ export default function CardDetails(props) {
   const updateDescription = (value) => {
     setValues({ ...values, description: value });
   };
-  const handleTitleChange = (e) => {
-    const editedTitle = e.target.value;
-    setText(editedTitle);
-    props.updateTitleAndDescription(editedTitle, description);
 
-    props.updateCardTitle(editedTitle);
-  };
-
-  const handleDescriptionChange = (e) => {
-    const editedDescription = e.target.value;
-    setDescription(editedDescription);
-    props.updateTitleAndDescription(text, editedDescription);
-  };
  const addTag = (value, color) => {
    const newTag = {
      id: uuidv4(),
@@ -65,7 +52,6 @@ export default function CardDetails(props) {
                 </h5>
               </div>
               <div className="mb-2">
-                {/* Description Input */}
                 <textarea
                   className="description-textarea"
                   placeholder="Add a description..."
@@ -77,7 +63,6 @@ export default function CardDetails(props) {
           </div>
           <div className="row">
             <div className="col-4">
-              <h6>Add to card</h6>
               <div className="d-flex card-action-btn flex-column gap-2">
                 <button onClick={() => setLabelShow(true)}>
                   <span className="icon-sm">
