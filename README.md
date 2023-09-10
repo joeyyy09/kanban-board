@@ -1,7 +1,7 @@
 # MERN Kanban Board
 
 <p align="center">
-  <img src="kanban-board-screenshot.png" alt="Kanban Board Screenshot" width="600">
+  <img src="https://iili.io/J9rIXWP.md.png" alt="Kanban Board Screenshot" width="600">
 </p>
 
 Manage your tasks efficiently with this Kanban board web application built using the MERN stack (MongoDB, Express.js, React, Node.js). This app enables users to seamlessly organize tasks by adding, deleting, editing, and effortlessly dragging tasks between columns - "To Do," "In Progress," and "Completed."
